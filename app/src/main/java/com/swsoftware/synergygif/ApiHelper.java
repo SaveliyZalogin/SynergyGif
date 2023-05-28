@@ -20,6 +20,8 @@ public class ApiHelper {
     private static final String RATES_API_KEY = "467e302e16f14ec99b9bbc1612ae0201";
     private static final String GIFS_API_KEY = "OcRqZV62MIW44d4hSgT3SSZ24N4P9J52";
 
+    private static final String GIF_SOURCE_URL = "https://i.giphy.com/media/";
+
     public static String getGifUrl() {
         try {
             JSONObject todayData = new JSONObject(
@@ -42,8 +44,10 @@ public class ApiHelper {
             }
 
             JSONObject gifJson = new JSONObject(gifResponse);
+            String gifId = ((JSONObject) ((JSONArray) gifJson.get("data")).get(0)).getString("id");
 
-            return ((JSONObject) ((JSONObject) ((JSONObject) ((JSONArray) gifJson.get("data")).get(0)).get("images")).get("original")).get("url").toString();
+//            return ((JSONObject) ((JSONObject) ((JSONObject) ((JSONArray) gifJson.get("data")).get(0)).get("images")).get("original")).get("url").toString();
+            return GIF_SOURCE_URL + gifId + "/200.gif";
         } catch (IOException | JSONException e) {
             throw new RuntimeException(e);
         }
