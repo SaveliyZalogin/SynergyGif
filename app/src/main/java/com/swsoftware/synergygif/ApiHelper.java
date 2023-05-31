@@ -47,7 +47,7 @@ public class ApiHelper {
             String gifId = ((JSONObject) ((JSONArray) gifJson.get("data")).get(0)).getString("id");
 
 //            return ((JSONObject) ((JSONObject) ((JSONObject) ((JSONArray) gifJson.get("data")).get(0)).get("images")).get("original")).get("url").toString();
-            return GIF_SOURCE_URL + gifId + "/200.gif";
+            return GIF_SOURCE_URL + gifId + "/200.mp4";
         } catch (IOException | JSONException e) {
             throw new RuntimeException(e);
         }
